@@ -1,8 +1,8 @@
-###  DATE: 
+###  DATE: 22.03.2024
 
-###  NAME: 
-###  ROLL NO :
-###  DEPARTMENT: 
+###  NAME: EZHIL NEVEDHA.K
+###  ROLL NO :212223230055
+###  DEPARTMENT: ARTIFICIAL INTELLIGENCE AND DATA SCIENCE
 
 
 # EXPERIMENT NO 05 INTERFACING ANALOG OUTPUT SERVO MOTOR WITH ARDUINO
@@ -54,12 +54,18 @@ An external controller (such as the Arduino) tells the servo where to go with a 
 
 
 
-CIRCUIT DIAGRAM
- 
- 
- ![image](https://user-images.githubusercontent.com/36288975/163544618-6eb8a7b5-7f1a-428a-8d9f-fd899b145efb.png)
 
 ### FIGURE 04 CIRCUIT DIAGRAM
+ ![image](https://github.com/ezhilnevedha/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/140057992/894c16c6-9840-49ef-8acb-6fc2ffec338d)
+
+![Screenshot 2024-03-22 161644](https://github.com/ezhilnevedha/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/140057992/bd370fe0-36cf-4f06-b650-eb39135df9fd)
+
+### SCHEMATIC VIEW:
+![Screenshot 2024-03-22 161319](https://github.com/ezhilnevedha/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/140057992/1216796f-f989-4956-8819-b58f9c6d5051)
+
+### GRAPHICAL REPRESENTATION:
+![Screenshot 2024-03-22 161722](https://github.com/ezhilnevedha/EXPERIMENT-NO--05-INTERFACING-ANALOG-OUTPUT-SERVO-MOTOR-WITH-ARDUINO-/assets/140057992/a1b5269c-581f-4a16-a0d7-6f47725f246c)
+
 
 ### PROCEDURE:
 1.	Connect the circuit as per the circuit diagram 
@@ -74,7 +80,52 @@ CIRCUIT DIAGRAM
 
 
 ### PROGRAM :
- 
+```
+#include<Servo.h>
+Servo sr1;
+int pos=0;
+int red=9;
+int green=8;
+void setup()
+{
+  sr1.attach(6);
+  Serial.begin(9600);
+  pinMode(red,OUTPUT);
+  pinMode(green,OUTPUT);
+}
+void loop()
+{
+  for(pos=0;pos<=180;pos+=5)
+  {
+    sr1.write(pos);
+      delay(200);
+    Serial.println(pos);
+     if(pos>=120)
+  {
+    digitalWrite(red,HIGH);
+      delay(200);
+    digitalWrite(red,LOW);
+      delay(200);
+  }
+  }
+  for(pos=180;pos>=0;pos-=5)
+  {
+    sr1.write(pos);
+      delay(200);
+    Serial.println(pos);
+  }
+
+    if(pos<=100)
+   {
+     digitalWrite(green,HIGH);
+     delay(200);
+     digitalWrite(green,LOW);
+     delay(200);
+}
+  }
+   
+   
+```
 
 
 
